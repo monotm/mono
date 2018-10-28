@@ -23,8 +23,12 @@
             // 숫자 외 문자열 제거 함수
             function numberDeleteChar(x) {
                 return x.toString().replace(/[^0-9]+/g, '');
+
+                  
             }
             
+
+
             // 달러 환율 함수
 function usdkrw(){
 $.get('http://api.manana.kr/exchange/rate/KRW/USD.json', function(data) {
@@ -61,7 +65,9 @@ document.getElementById("usdkrw").innerHTML=('$1 = ' + usd);
             function upbit(){
                 $.get('https://api.upbit.com/v1/ticker?markets=KRW-XLM', function(data) {
                     var upbit_xlm = parseFloat(data[0].trade_price);
+                  var upbit_xlm_24 = parseFloat(data[0].acc_trade_price_24h /100000000 );
                     $('#upbit_XLM').html('' + numberWithCommas(upbit_xlm) + ' 원');
+                    $('#upbit_XLM_24').html('' + numberWithCommas(upbit_xlm_24 .toFixed(0) ) + '억 거래량');
                 });
             }
 
@@ -103,9 +109,10 @@ document.getElementById("usdkrw").innerHTML=('$1 = ' + usd);
         &nbsp;<span id="usdkrw"></span>
         <p>&nbsp;코인원&nbspBTC&nbsp;: <span id="coinone_BTC"></span> </p>
         <p>&nbsp;코인원&nbsp;XRP&nbsp;: <span id="coinone_XRP"></span> </p>
-        <p>&nbsp;빗썸&nbsp;&nbsp;&nbsp;&nbsp;XRP&nbsp;: <span id="bithumb_XRP"></span> </p>
+        <p>&nbsp;빗썸&nbsp;&nbsp;&nbsp;&nbsp;XRP&nbsp;: <span id="bithumb_XRP"></span> </p> 
         <p>&nbsp;업비트XRP&nbsp;: <span id="upbit_XRP"></span> </p>
         <p>&nbsp;업비트XLM&nbsp;: <span id="upbit_XLM"></span> </p>
+        <p>&nbsp;업비트XLM&nbsp;: <span id="upbit_XLM_24" ></span> </p>
         
     </body>
     
