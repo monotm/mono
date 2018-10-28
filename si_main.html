@@ -59,7 +59,7 @@ document.getElementById("usdkrw").innerHTML=('$1 = ' + usd);
             // upbit 함수
             function upbit(){
                 $.get('https://api.upbit.com/v1/ticker?markets=KRW-XLM', function(data) {
-                    var upbit_xlm = parseFloat(data['trade_price']);
+                    var upbit_xlm = parseFloat(data[0].trade_price);
                     $('#upbit_XLM').html('' + numberWithCommas(upbit_xlm) + ' 원');
                 });
             }
