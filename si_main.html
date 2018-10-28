@@ -40,9 +40,9 @@ document.getElementById("usdkrw").innerHTML=('$1 = ' + usd);
                     var coinone_btc = parseFloat(data['btc']['last']);
                     var coinone_eth = parseFloat(data['eth']['last']);
                     var coinone_xrp = parseFloat(data['xrp']['last']);
-                    $('#coinone_BTC').html('\\ ' + numberWithCommas(coinone_btc)); // 거래소 시세 정보 표에 값 세팅
-                    $('#coinone_ETH').html('\\ ' + numberWithCommas(coinone_eth));
-                    $('#coinone_XRP').html('\\ ' + numberWithCommas(coinone_xrp));
+                    $('#coinone_BTC').html('' + numberWithCommas(coinone_btc) + ' 원'); // 거래소 시세 정보 표에 값 세팅
+                    $('#coinone_ETH').html('' + numberWithCommas(coinone_eth) + ' 원');
+                    $('#coinone_XRP').html('' + numberWithCommas(coinone_xrp) + ' 원');
                 });
             }
             // 빗썸 함수 (크로스도메인 문제로 익스에서만 됨)
@@ -51,18 +51,19 @@ document.getElementById("usdkrw").innerHTML=('$1 = ' + usd);
                     var bithumb_btc = parseFloat(data['data']['BTC']['closing_price']);
                     var bithumb_eth = parseFloat(data['data']['ETH']['closing_price']);
                     var bithumb_xrp = parseFloat(data['data']['XRP']['closing_price']);
-                    $('#bithumb_BTC').html('\\ ' + numberWithCommas(bithumb_btc)); // 거래소 시세 정보 표에 값 세팅
-                    $('#bithumb_ETH').html('\\ ' + numberWithCommas(bithumb_eth));
-                    $('#bithumb_XRP').html('\\ ' + numberWithCommas(bithumb_xrp));
+                    $('#bithumb_BTC').html('' + numberWithCommas(bithumb_btc) + ' 원'); // 거래소 시세 정보 표에 값 세팅
+                    $('#bithumb_ETH').html('' + numberWithCommas(bithumb_eth) + ' 원');
+                    $('#bithumb_XRP').html('' + numberWithCommas(bithumb_xrp) + ' 원');
                 });
             }
             // upbit 함수
             function upbit(){
                 $.get('https://api.upbit.com/v1/ticker?markets=KRW-XLM', function(data) {
                     var upbit_xlm = parseFloat(data['trade_price']);
-                    $('#upbit_XLM').html('\\ ' + numberWithCommas(upbit_xlm));
+                    $('#upbit_XLM').html('' + numberWithCommas(upbit_xlm) + ' 원');
                 });
             }
+
             // 현재 시간 갱신
             function CurrentTime() {
                 var d = new Date();
