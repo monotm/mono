@@ -37,6 +37,18 @@ usd = data['rate'];
 document.getElementById("usdkrw").innerHTML=('$1 = ' + usd);
 });
 }
+
+            // Coinmarketcap 함수
+            function coinma(){
+                $.get('https://api.coinmarketcap.com/v2/global/?convert=KRW', function(data) {
+                    var coinma_usd = parseFloat(data['data']['quotes']['USD']['total_market_cap']);
+                    var coinma_krw = parseFloat(data['data']['quotes']['KRW']['total_market_cap'] / 100000000 );
+                    var coinma_per = parseFloat(data['data']['bitcoin_percentage_of_market_cap']);
+                    $('#coinma_USD').html('' + numberWithCommas(coinma_usd) + ' 원'); // 거래소 시세 정보 표에 값 세팅
+                    $('#coinma_KRW').html('' + numberWithCommas(coinma_krw .toFixed(0) ) + ' 억원');
+                    $('#coinma_PER').html('' + numberWithCommas(coinma_per) + ' %');
+                });
+            }
             
             // 코인원 함수
             function coinone(){
@@ -89,6 +101,7 @@ document.getElementById("usdkrw").innerHTML=('$1 = ' + usd);
             function proc() {
                 try {
                     usdkrw(); // 환율
+                    coinma(); // 
                     coinone(); // 코인원
                     bithumb(); // 빗썸
                     upbit(); // 
@@ -109,10 +122,12 @@ document.getElementById("usdkrw").innerHTML=('$1 = ' + usd);
         &nbsp;<span id="usdkrw"></span>
         <p>&nbsp;코인원&nbspBTC&nbsp;: <span id="coinone_BTC"></span> </p>
         <p>&nbsp;코인원&nbsp;XRP&nbsp;: <span id="coinone_XRP"></span> </p>
-        <p>&nbsp;빗썸&nbsp;&nbsp;&nbsp;&nbsp;XRP&nbsp;: <span id="bithumb_XRP"></span> </p> 
+        <!--        <p>&nbsp;빗썸&nbsp;&nbsp;&nbsp;&nbsp;XRP&nbsp;: <span id="bithumb_XRP"></span> </p>  -->
         <p>&nbsp;업비트XRP&nbsp;: <span id="upbit_XRP"></span> </p>
         <p>&nbsp;업비트XLM&nbsp;: <span id="upbit_XLM"></span> </p>
         <p>&nbsp;업비트XLM&nbsp;: <span id="upbit_XLM_24" ></span> </p>
+        <p>&nbsp;시가총액&nbsp;: <span id="coinma_KRW" ></span> </p>
+        <p>&nbsp;비트점유&nbsp;: <span id="coinma_PER" ></span> </p>
         
     </body>
     
