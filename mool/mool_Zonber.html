@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=euc-kr" />
+        <meta name="theme-color" content="#000000">
+            <body bgcolor = "#000000" text="#01DF74">
+              <font size="5px">
+                <font face="나눔고딕">
+                <font weight="bold">
+        <style>
+            table {border-collapse: collapse}
+            td, th {padding:5px; width:120px}
+        </style>
+        <script src="https://code.jquery.com/jquery-1.4.4.min.js"></script>
+        <script>
+            // 전역 변수 세팅
+            var usd = 0;
+            var alert_array = new Array();
+            
+            // 천단위 콤마 함수
+            function numberWithCommas(x) {
+                return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+            }
+            // 숫자 외 문자열 제거 함수
+            function numberDeleteChar(x) {
+                return x.toString().replace(/[^0-9]+/g, '');
+
+                  
+            }
+            
+
+
+            // 달러 환율 함수
+function usdkrw(){
+$.get('http://api.manana.kr/exchange/rate/KRW/USD.json', function(data) {
+data = data[0];
+usd = data['rate'];
+document.getElementById("usdkrw").innerHTML=('$1 = ' + usd);
+});
+}
+
+            // Coinmarketcap 함수
+            function coinma(){
+                $.get('https://api.coinmarketcap.com/v2/global/?convert=KRW', function(data) {
+                    var coinma_usd = parseFloat(data['data']['quotes']['USD']['total_market_cap']);
+var temp = parseFloat(data['data']['quotes']['KRW']['total_market_cap'] / 100000000 );
+var display_1 = parseFloat(data['data']['quotes']['KRW']['total_market_cap'] / 1000000000000 );
+var display_2 = (display_1*100000) - temp ;
+var display_3 = (display_2/10000) ;
+                    var coinma_per = parseFloat(data['data']['bitcoin_percentage_of_market_cap']);
+                    $('#coinma_USD').html('' + numberWithCommas(coinma_usd) + ' 원'); // 거래소 시세 정보 표에 값 세팅
+$('#coinma_KRW').html('' + numberWithCommas(temp.toFixed(0) ) + '억원 ');
+                    $('#coinma_PER').html('' + numberWithCommas(coinma_per) + ' %');
+                });
+            }
+
+            // Coinmarketcap 함수
+            function coinma_512(){
+                $.get('https://api.coinmarketcap.com/v2/ticker/512/?convert=KRW', function(data) {
+                    var coinmaprice_krw = parseFloat(data['data']['quotes']['KRW']['price'] );
+                    var coinmavolume_24h_krw = parseFloat(data['data']['quotes']['KRW']['volume_24h'] / 100000000 );
+var temp = parseFloat(data['data']['quotes']['KRW']['market_cap'] / 100000000 );
+var display_1 = parseFloat(data['data']['quotes']['KRW']['market_cap'] / 1000000000000 );
+var display_2 = (display_1*100000) - temp ;
+var display_3 = (display_2/10000) ;
+                    $('#coinma_512_KRW').html('' + numberWithCommas(coinmaprice_krw .toFixed(0) ) + ' 원');
+                    $('#coinma_v24_KRW').html('' + numberWithCommas(coinmavolume_24h_krw .toFixed(0) ) + ' 억원');
+$('#coinma_cap_KRW').html('' + numberWithCommas(temp.toFixed(0) ) + ' 억원 ');
+
+                });
+            }
+
+            
+            // 코인원 함수
+            function coinone(){
+                $.get('https://api.coinone.co.kr/ticker?currency=all', function(data) {
+                    var coinone_btc = parseFloat(data['btc']['last']);
+                    var coinone_eth = parseFloat(data['eth']['last']);
+                    var coinone_xrp = parseFloat(data['xrp']['last']);
+                    $('#coinone_BTC').html('' + numberWithCommas(coinone_btc) + ' 원'); // 거래소 시세 정보 표에 값 세팅
+                    $('#coinone_ETH').html('' + numberWithCommas(coinone_eth) + ' 원');
+                    $('#coinone_XRP').html('' + numberWithCommas(coinone_xrp) + ' 원');
+                });
+            }
+            // 빗썸 함수 (크로스도메인 문제로 익스에서만 됨)
+            function bithumb(){
+                $.get('https://api.bithumb.com/public/ticker/ALL', function(data) {
+                    var bithumb_btc = parseFloat(data['data']['BTC']['closing_price']);
+                    var bithumb_eth = parseFloat(data['data']['ETH']['closing_price']);
+                    var bithumb_xrp = parseFloat(data['data']['XRP']['closing_price']);
+                    $('#bithumb_BTC').html('' + numberWithCommas(bithumb_btc) + ' 원'); // 거래소 시세 정보 표에 값 세팅
+                    $('#bithumb_ETH').html('' + numberWithCommas(bithumb_eth) + ' 원');
+                    $('#bithumb_XRP').html('' + numberWithCommas(bithumb_xrp) + ' 원');
+                });
+            }
+
+            // upbit 함수
+            function upbit(){
+                $.get('https://api.upbit.com/v1/ticker?markets=KRW-XLM', function(data) {
+                    var upbit_xlm = parseFloat(data[0].trade_price);
+                  var upbit_xlm_24 = parseFloat(data[0].acc_trade_price_24h /100000000 );
+                    $('#upbit_XLM').html('' + numberWithCommas(upbit_xlm) + ' 원');
+                    $('#upbit_XLM_24').html('' + numberWithCommas(upbit_xlm_24 .toFixed(0) ) + '억원');
+                });
+            }
+
+            // upbit 함수
+            function upbitxrp(){
+                $.get('https://api.upbit.com/v1/ticker?markets=KRW-XRP', function(data) {
+                    var upbit_xrp = parseFloat(data[0].trade_price);
+                    $('#upbit_XRP').html('' + numberWithCommas(upbit_xrp) + ' 원');
+                });
+            }
+
+            // 현재 시간 갱신
+            function CurrentTime() {
+                var d = new Date();
+                $("#lastUpdate").html(d.toString());
+            }
+            
+            // 갱신 함수
+            function proc() {
+                try {
+                    usdkrw(); // 환율
+                    coinma(); // 
+                    coinma_512(); // 
+                    coinone(); // 코인원
+                    bithumb(); // 빗썸
+                    upbit(); // 
+                    upbitxrp(); // 
+                    alert_start(); // 알람 확인
+                    CurrentTime(); // 갱신 시간
+                } catch(e){
+                    
+                } finally {
+                    setTimeout("proc()", 10000); //10초후 재시작
+                }
+            }
+        </script>
+    </head>
+    <body onLoad="proc()">
+        <!-- 환율 정보 -->
+                      <font size="5px">
+        <p>&nbsp;업비트 &nbsp;&nbsp;&nbsp;XLM&nbsp;: <span id="upbit_XLM"></span> </p>
+        <p>&nbsp;비트렉스 XLM&nbsp;: <span id="coinma_512_KRW"></span> </p>
+                              <font size="3px">
+        <p>&nbsp;&nbsp;업비트 XLM&nbsp;24H 거래량 : <span id="upbit_XLM_24" ></span> </p>
+        <p>&nbsp;&nbsp;XLM&nbsp;24H 거래량 : <span id="coinma_v24_KRW" ></span> </p>
+        <p>&nbsp;&nbsp;XLM&nbsp;시가총액 : <span id="coinma_cap_KRW" ></span> </p>
+        
+                      <font size="5px">
+        <p>&nbsp;코인원&nbspBTC&nbsp;: <span id="coinone_BTC"></span> </p>
+        <!--        <p>&nbsp;빗썸&nbsp;&nbsp;&nbsp;&nbsp;XRP&nbsp;: <span id="bithumb_XRP"></span> </p>  -->
+        <p>&nbsp;업비트 XRP&nbsp;: <span id="upbit_XRP"></span> </p>
+                      <font size="3px">
+        <p>&nbsp;&nbsp;시가총액&nbsp;: <span id="coinma_KRW" ></span> </p>
+        
+    </body>
+    
+</html>
+
+
+
