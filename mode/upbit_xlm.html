@@ -4,7 +4,7 @@
         <meta name="theme-color" content="#000000">
             <body bgcolor = "#000000" text="#01DF74">
               <font size="5px">
-                <font face="³ª´®°íµñ">
+                <font face="ë‚˜ëˆ”ê³ ë”•">
                 <font weight="bold">
         <style>
             table {border-collapse: collapse}
@@ -12,51 +12,50 @@
         </style>
         <script src="https://code.jquery.com/jquery-1.4.4.min.js"></script>
         <script>
-            // Àü¿ª º¯¼ö ¼¼ÆÃ
+            // ì „ì—­ ë³€ìˆ˜ ì„¸íŒ…
             var usd = 0;
             var alert_array = new Array();
             
-            // Ãµ´ÜÀ§ ÄŞ¸¶ ÇÔ¼ö
+            // ì²œë‹¨ìœ„ ì½¤ë§ˆ í•¨ìˆ˜
             function numberWithCommas(x) {
                 return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
             }
-            // ¼ıÀÚ ¿Ü ¹®ÀÚ¿­ Á¦°Å ÇÔ¼ö
+            // ìˆ«ì ì™¸ ë¬¸ìì—´ ì œê±° í•¨ìˆ˜
             function numberDeleteChar(x) {
                 return x.toString().replace(/[^0-9]+/g, '');
             }
             
-            // upbit ÇÔ¼ö
+            // upbit í•¨ìˆ˜
             function upbit(){
                 $.get('https://api.upbit.com/v1/ticker?markets=KRW-XLM', function(data) {
                     var upbit_xlm = parseFloat(data[0].trade_price);
-                    $('#upbit_XLM').html(numberWithCommas(upbit_xlm) + ' ¿ø');
+                    $('#upbit_XLM').html(numberWithCommas(upbit_xlm) + ' ì›');
                 });
             }
 
-            // ÇöÀç ½Ã°£ °»½Å
+            // í˜„ì¬ ì‹œê°„ ê°±ì‹ 
             function CurrentTime() {
                 var d = new Date();
                 $("#lastUpdate").html(d.toString());
             }
             
-            // °»½Å ÇÔ¼ö
+            // ê°±ì‹  í•¨ìˆ˜
             function proc() {
                 try {
                     upbit(); // 
-                    CurrentTime(); // °»½Å ½Ã°£
+                    CurrentTime(); // ê°±ì‹  ì‹œê°„
                 } catch(e){
                     
                 } finally {
-                    setTimeout("proc()", 10000); //10ÃÊÈÄ Àç½ÃÀÛ
+                    setTimeout("proc()", 10000); //10ì´ˆí›„ ì¬ì‹œì‘
                 }
             }
         </script>
     </head>
     <body onLoad="proc()">
         <p></p>
-        <p>&nbsp;¾÷ºñÆ®XLM&nbsp;: <span id="upbit_XLM"></span> </p>
+        <p>&nbsp;ì—…ë¹„íŠ¸XLM&nbsp;: <span id="upbit_XLM"></span> </p>
         
     </body>
     
 </html>
-
