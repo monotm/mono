@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=euc-kr" />
+        <meta name="theme-color" content="#000000">
+            <body bgcolor = "#000000" text="#F2F2F2">
+              <font size="5px">
+                <font face="나눔고딕">
+                <font weight="bold">
+        <style>
+            table {border-collapse: collapse}
+            td, th {padding:5px; width:120px}
+        </style>
+        <script src="https://code.jquery.com/jquery-1.4.4.min.js"></script>
+        <script>
+            // 전역 변수 세팅
+            var usd = 0;
+            var alert_array = new Array();
+            
+            // 천단위 콤마 함수
+            function numberWithCommas(x) {
+                return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+            }
+            // 숫자 외 문자열 제거 함수
+            function numberDeleteChar(x) {
+                return x.toString().replace(/[^0-9]+/g, '');
+            }
+            
+            // upbit 함수
+            function upbit(){
+                $.get('https://api.upbit.com/v1/ticker?markets=KRW-XLM', function(data) {
+                    var upbit_xlm = parseFloat(data[0].trade_price);
+                    $('#upbit_XLM').html(numberWithCommas(upbit_xlm) + ' ');
+                });
+            }
+
+            // 현재 시간 갱신
+            function CurrentTime() {
+                var d = new Date();
+                $("#lastUpdate").html(d.toString());
+            }
+            
+            // 갱신 함수
+            function proc() {
+                try {
+                    upbit(); // 
+                    CurrentTime(); // 갱신 시간
+                } catch(e){
+                    
+                } finally {
+                    setTimeout("proc()", 10000); //10초후 재시작
+                }
+            }
+        </script>
+    </head>
+    <body onLoad="proc()">
+        <p></p>
+        <p> <span id="upbit_XLM"></span> </p>
+        
+    </body>
+    
+</html>
