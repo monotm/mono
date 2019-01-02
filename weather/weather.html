@@ -1,7 +1,7 @@
 <html>
 <body>
 <script>
-// ÆÄ¶ó¹ÌÅÍ·Î Áö¿ª °ªÀ» ¹ŞÀº ÈÄ Ã³¸®ÇÏ´Â ÇÔ¼ö
+// íŒŒë¼ë¯¸í„°ë¡œ ì§€ì—­ ê°’ì„ ë°›ì€ í›„ ì²˜ë¦¬í•˜ëŠ” í•¨ìˆ˜
 function getQuerystring(key, default_)
 {
   if (default_==null) default_=""; 
@@ -17,7 +17,7 @@ function getQuerystring(key, default_)
 var xx = getQuerystring('xx');
 var yy = getQuerystring('yy');
 
-// ±âº»°ªÀº ¼­¿ï/°æ±â.
+// ê¸°ë³¸ê°’ì€ ì„œìš¸/ê²½ê¸°.
 if (xx == '' && yy == '')
 {
 	xx = "59";
@@ -27,16 +27,16 @@ if (xx == '' && yy == '')
 function pass_go()
 {
 	var frm = document.frm;
-	if (frm.sel.value == "01"){	var xx = "59";	var yy = "123";	}	// ¼­¿ï/°æ±â(°æ±â ¾È¾ç ±âÁØ)
-	if (frm.sel.value == "02"){	var xx = "75";	var yy = "115";	}	// ÃæºÏ(ÃæºÏ ÃæÁÖ ±âÁØ)
-	if (frm.sel.value == "03"){	var xx = "59";	var yy = "110";	}	// Ãæ³²(Ãæ³² ¾Æ»ê ±âÁØ)
-	if (frm.sel.value == "04"){	var xx = "105";	var yy = "94";	}	// °æºÏ(°æºÏ Æ÷Ç× ±âÁØ)
-	if (frm.sel.value == "05"){	var xx = "80";	var yy = "73";	}	// °æ³²(°æ³² »çÃµ ±âÁØ)
-	if (frm.sel.value == "06"){	var xx = "67";	var yy = "80";	}	// ÀüºÏ(ÀüºÏ ³²¿ø ±âÁØ)
-	if (frm.sel.value == "07"){	var xx = "74";	var yy = "70";	}	// Àü³²(Àü³² ±¤¾ç ±âÁØ)
-	if (frm.sel.value == "08"){	var xx = "72";	var yy = "133";	}	// °­¿ø(°­¿ø ÃáÃµ ±âÁØ)
-	if (frm.sel.value == "09"){	var xx = "53";	var yy = "38";	}	// Á¦ÁÖ(Á¦ÁÖ Á¦ÁÖ ±âÁØ)
-	if (frm.sel.value == "10"){	var xx = "127";	var yy = "127";	}	// ¿ï¸ª(°æºÏ ¿ï¸ª ±âÁØ)
+	if (frm.sel.value == "01"){	var xx = "59";	var yy = "123";	}	// ì„œìš¸/ê²½ê¸°(ê²½ê¸° ì•ˆì–‘ ê¸°ì¤€)
+	if (frm.sel.value == "02"){	var xx = "75";	var yy = "115";	}	// ì¶©ë¶(ì¶©ë¶ ì¶©ì£¼ ê¸°ì¤€)
+	if (frm.sel.value == "03"){	var xx = "59";	var yy = "110";	}	// ì¶©ë‚¨(ì¶©ë‚¨ ì•„ì‚° ê¸°ì¤€)
+	if (frm.sel.value == "04"){	var xx = "105";	var yy = "94";	}	// ê²½ë¶(ê²½ë¶ í¬í•­ ê¸°ì¤€)
+	if (frm.sel.value == "05"){	var xx = "80";	var yy = "73";	}	// ê²½ë‚¨(ê²½ë‚¨ ì‚¬ì²œ ê¸°ì¤€)
+	if (frm.sel.value == "06"){	var xx = "67";	var yy = "80";	}	// ì „ë¶(ì „ë¶ ë‚¨ì› ê¸°ì¤€)
+	if (frm.sel.value == "07"){	var xx = "74";	var yy = "70";	}	// ì „ë‚¨(ì „ë‚¨ ê´‘ì–‘ ê¸°ì¤€)
+	if (frm.sel.value == "08"){	var xx = "72";	var yy = "133";	}	// ê°•ì›(ê°•ì› ì¶˜ì²œ ê¸°ì¤€)
+	if (frm.sel.value == "09"){	var xx = "53";	var yy = "38";	}	// ì œì£¼(ì œì£¼ ì œì£¼ ê¸°ì¤€)
+	if (frm.sel.value == "10"){	var xx = "127";	var yy = "127";	}	// ìš¸ë¦‰(ê²½ë¶ ìš¸ë¦‰ ê¸°ì¤€)
 
 	frm.action="weather.html?xx="+xx+"&yy="+yy;
 	frm.submit();
@@ -44,18 +44,18 @@ function pass_go()
 
 document.write("<form name='frm' method='post'>");
 document.write("<select name='sel'>");
-if (xx == "59" && yy == "123")	{	document.write("<option value='01' selected>¼­¿ï/°æ±â</option>");	}	else	{	document.write("<option value='01'>¼­¿ï/°æ±â</option>");	}
-if (xx == "75" && yy == "115")	{	document.write("<option value='02' selected>ÃæÃ»ºÏµµ</option>");	}	else	{	document.write("<option value='02'>ÃæÃ»ºÏµµ</option>");	}
-if (xx == "59" && yy == "110")	{	document.write("<option value='03' selected>ÃæÃ»³²µµ</option>");	}	else	{	document.write("<option value='03'>ÃæÃ»³²µµ</option>");	}
-if (xx == "105" && yy == "94")	{	document.write("<option value='04' selected>°æ»óºÏµµ</option>");	}	else	{	document.write("<option value='04'>°æ»óºÏµµ</option>");	}
-if (xx == "80" && yy == "73")	{	document.write("<option value='05' selected>°æ»ó³²µµ</option>");	}	else	{	document.write("<option value='05'>°æ»ó³²µµ</option>");	}
-if (xx == "67" && yy == "80")	{	document.write("<option value='06' selected>Àü¶óºÏµµ</option>");	}	else	{	document.write("<option value='06'>Àü¶óºÏµµ</option>");	}
-if (xx == "74" && yy == "70")	{	document.write("<option value='07' selected>Àü¶ó³²µµ</option>");	}	else	{	document.write("<option value='07'>Àü¶ó³²µµ</option>");	}
-if (xx == "72" && yy == "133")	{	document.write("<option value='08' selected>°­¿øµµ</option>");	 }	else	{	document.write("<option value='08'>°­¿øµµ</option>");	 }
-if (xx == "53" && yy == "38")	{	document.write("<option value='09' selected>Á¦ÁÖµµ</option>");	 }	else	{	document.write("<option value='09'>Á¦ÁÖµµ</option>");	 }
-if (xx == "127" && yy == "127")	{	document.write("<option value='10' selected>¿ï¸ªµµ</option>");	 }	else	{	document.write("<option value='10'>¿ï¸ªµµ</option>");	 }
+if (xx == "59" && yy == "123")	{	document.write("<option value='01' selected>ì„œìš¸/ê²½ê¸°</option>");	}	else	{	document.write("<option value='01'>ì„œìš¸/ê²½ê¸°</option>");	}
+if (xx == "75" && yy == "115")	{	document.write("<option value='02' selected>ì¶©ì²­ë¶ë„</option>");	}	else	{	document.write("<option value='02'>ì¶©ì²­ë¶ë„</option>");	}
+if (xx == "59" && yy == "110")	{	document.write("<option value='03' selected>ì¶©ì²­ë‚¨ë„</option>");	}	else	{	document.write("<option value='03'>ì¶©ì²­ë‚¨ë„</option>");	}
+if (xx == "105" && yy == "94")	{	document.write("<option value='04' selected>ê²½ìƒë¶ë„</option>");	}	else	{	document.write("<option value='04'>ê²½ìƒë¶ë„</option>");	}
+if (xx == "80" && yy == "73")	{	document.write("<option value='05' selected>ê²½ìƒë‚¨ë„</option>");	}	else	{	document.write("<option value='05'>ê²½ìƒë‚¨ë„</option>");	}
+if (xx == "67" && yy == "80")	{	document.write("<option value='06' selected>ì „ë¼ë¶ë„</option>");	}	else	{	document.write("<option value='06'>ì „ë¼ë¶ë„</option>");	}
+if (xx == "74" && yy == "70")	{	document.write("<option value='07' selected>ì „ë¼ë‚¨ë„</option>");	}	else	{	document.write("<option value='07'>ì „ë¼ë‚¨ë„</option>");	}
+if (xx == "72" && yy == "133")	{	document.write("<option value='08' selected>ê°•ì›ë„</option>");	 }	else	{	document.write("<option value='08'>ê°•ì›ë„</option>");	 }
+if (xx == "53" && yy == "38")	{	document.write("<option value='09' selected>ì œì£¼ë„</option>");	 }	else	{	document.write("<option value='09'>ì œì£¼ë„</option>");	 }
+if (xx == "127" && yy == "127")	{	document.write("<option value='10' selected>ìš¸ë¦‰ë„</option>");	 }	else	{	document.write("<option value='10'>ìš¸ë¦‰ë„</option>");	 }
 document.write("</select>");
-document.write("&nbsp;<input type='submit' value='Àü¼Û' onclick='pass_go()'>");
+document.write("&nbsp;<input type='submit' value='ì „ì†¡' onclick='pass_go()'>");
 document.write("</form>");
 </script>
 
@@ -69,7 +69,7 @@ else
   xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
   }
 
-// ÆÄ¶ó¹ÌÅÍ·Î ¹ŞÀº Áö¿ª°ª¿¡ µû¶ó ±â»óÃ» Áö¿ª¿¹º¸¸¦ °¡Á®¿È.
+// íŒŒë¼ë¯¸í„°ë¡œ ë°›ì€ ì§€ì—­ê°’ì— ë”°ë¼ ê¸°ìƒì²­ ì§€ì—­ì˜ˆë³´ë¥¼ ê°€ì ¸ì˜´.
 xmlhttp.open("GET","http://www.kma.go.kr/wid/queryDFS.jsp?gridx="+xx+"&gridy="+yy+"",false);
 xmlhttp.send();
 xmlDoc=xmlhttp.responseXML; 
@@ -77,7 +77,7 @@ xmlDoc=xmlhttp.responseXML;
 var now = new Date();
 var hour = now.getHours();
 
-// ±â»óÃ» xmlÀº 3½Ã°£ ´ÜÀ§·Î ¿¹º¸¸¦ º¸¿©ÁÜ. ÇöÀç½Ã°£ ±âÁØÀ¸·Î ¾î¶² ¿¹º¸¸¦ °¡Á®¿Ã °ÍÀÎÁö Á¤ÇÔ.
+// ê¸°ìƒì²­ xmlì€ 3ì‹œê°„ ë‹¨ìœ„ë¡œ ì˜ˆë³´ë¥¼ ë³´ì—¬ì¤Œ. í˜„ì¬ì‹œê°„ ê¸°ì¤€ìœ¼ë¡œ ì–´ë–¤ ì˜ˆë³´ë¥¼ ê°€ì ¸ì˜¬ ê²ƒì¸ì§€ ì •í•¨.
 if (hour == 0 || hour == 1 || hour == 2)
 {
 	var hourGubun = 3;
@@ -121,15 +121,15 @@ for (i=0;i<x.length;i++)
 		  document.write("<td align='middle'>");
 		  if (x[i].getElementsByTagName("day")[0].childNodes[0].nodeValue == "0")
 		  {
-			document.write("¿À´Ã")
+			document.write("ì˜¤ëŠ˜")
 		  }
 		  if (x[i].getElementsByTagName("day")[0].childNodes[0].nodeValue == "1")
 		  {
-			document.write("³»ÀÏ")
+			document.write("ë‚´ì¼")
 		  }
 		  if (x[i].getElementsByTagName("day")[0].childNodes[0].nodeValue == "2")
 		  {
-			document.write("¸ğ·¹")
+			document.write("ëª¨ë ˆ")
 		  }
 
 		  document.write("</td>");
@@ -142,25 +142,25 @@ for (i=0;i<x.length;i++)
 	  if (x[i].getElementsByTagName("hour")[0].childNodes[0].nodeValue == hourGubun)
 	  {	  
 		  document.write("<td align='middle'>");
-		  if (x[i].getElementsByTagName("wfKor")[0].childNodes[0].nodeValue == "¸¼À½")
+		  if (x[i].getElementsByTagName("wfKor")[0].childNodes[0].nodeValue == "ë§‘ìŒ")
 		  {
-			document.write("<img src='./img/¸¼À½.png' alt='¸¼À½'>")
+			document.write("<img src='./img/ë§‘ìŒ.png' alt='ë§‘ìŒ'>")
 		  }
-		  if (x[i].getElementsByTagName("wfKor")[0].childNodes[0].nodeValue == "±¸¸§¸¹À½")
+		  if (x[i].getElementsByTagName("wfKor")[0].childNodes[0].nodeValue == "êµ¬ë¦„ë§ìŒ")
 		  {
-			document.write("<img src='./img/±¸¸§¸¹À½.png' alt='±¸¸§¸¹À½'>")
+			document.write("<img src='./img/êµ¬ë¦„ë§ìŒ.png' alt='êµ¬ë¦„ë§ìŒ'>")
 		  }
-		  if (x[i].getElementsByTagName("wfKor")[0].childNodes[0].nodeValue == "±¸¸§Á¶±İ")
+		  if (x[i].getElementsByTagName("wfKor")[0].childNodes[0].nodeValue == "êµ¬ë¦„ì¡°ê¸ˆ")
 		  {
-			document.write("<img src='./img/±¸¸§Á¶±İ.png' alt='±¸¸§Á¶±İ'>")
+			document.write("<img src='./img/êµ¬ë¦„ì¡°ê¸ˆ.png' alt='êµ¬ë¦„ì¡°ê¸ˆ'>")
 		  }
-		  if (x[i].getElementsByTagName("wfKor")[0].childNodes[0].nodeValue == "Èå¸®°í ºñ" || x[i].getElementsByTagName("wfKor")[0].childNodes[0].nodeValue == "ºñ")
+		  if (x[i].getElementsByTagName("wfKor")[0].childNodes[0].nodeValue == "íë¦¬ê³  ë¹„" || x[i].getElementsByTagName("wfKor")[0].childNodes[0].nodeValue == "ë¹„")
 		  {
-			document.write("<img src='./img/Èå¸®°íºñ.png' alt='Èå¸®°íºñ'>")
+			document.write("<img src='./img/íë¦¬ê³ ë¹„.png' alt='íë¦¬ê³ ë¹„'>")
 		  }
-		  if (x[i].getElementsByTagName("wfKor")[0].childNodes[0].nodeValue == "´«/ºñ")
+		  if (x[i].getElementsByTagName("wfKor")[0].childNodes[0].nodeValue == "ëˆˆ/ë¹„")
 		  {
-			document.write("<img src='./img/´«ºñ.png' alt='´«/ºñ'>")
+			document.write("<img src='./img/ëˆˆë¹„.png' alt='ëˆˆ/ë¹„'>")
 		  }
 		//  document.write(x[i].getElementsByTagName("reliability")[0].childNodes[0].nodeValue);
 		  document.write("<br><font color='blue'>")
