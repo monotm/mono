@@ -1,0 +1,84 @@
+<html>
+<body>
+
+<script type="text/javascript">
+if (window.XMLHttpRequest)
+  {// code for IE7+, Firefox, Chrome, Opera, Safari
+  xmlhttp=new XMLHttpRequest();
+  }
+else
+  {// code for IE6, IE5
+  xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+  }
+
+// 파라미터로 받은 지역값에 따라 기상청 지역예보를 가져옴.
+xmlhttp.open("GET","http://www.kma.go.kr/weather/forecast/mid-term-xml.jsp?stnId=109",false);
+xmlhttp.send();
+xmlDoc=xmlhttp.responseXML; 
+
+document.write("<table border='0' style='border:1px #bfbfbf solid; font-size:12px' cellpadding='5'>");
+var x=xmlDoc.getElementsByTagName("location");
+var y=xmlDoc.getElementsByTagName("data");
+
+document.write(y[6].getElementsByTagName("tmx")[0].childNodes[0].nodeValue+"<br>");
+
+document.write("<tr>");
+for (j=0;j<x.length;j++)
+{	
+	if (x[j].getElementsByTagName("city")[0].childNodes[0].nodeValue == "인천")
+	{
+		for (i=0;i<3;i++)
+		{
+			var a = y[i].getElementsByTagName("tmEf")[0].childNodes[0].nodeValue;
+			var b = a.substr(a.length-5,5);
+			document.write("<td align='middle'>");
+			document.write(b);
+			document.write("</td>");
+		}
+	}
+}
+document.write("</tr>");
+document.write("<tr>");
+for (j=0;j<x.length;j++)
+{
+	if (x[j].getElementsByTagName("city")[0].childNodes[0].nodeValue == "인천")
+	{
+		for (i=0;i<3;i++)
+		{
+			document.write("<td align='middle'>");
+			if (y[i].getElementsByTagName("wf")[0].childNodes[0].nodeValue == "구름조금")
+			{
+				document.write("<img src='./img/구름조금.png' alt='구름조금'>");
+			}
+			if (y[i].getElementsByTagName("wf")[0].childNodes[0].nodeValue == "흐리고 비" || y[i].getElementsByTagName("wf")[0].childNodes[0].nodeValue == "구름많고 비")
+			{
+				document.write("<img src='./img/흐리고비.png' alt='흐리고비'>");
+			}
+			document.write("</td>");
+		}
+	}
+}
+document.write("</tr>");
+document.write("<tr>");
+for (j=0;j<x.length;j++)
+{
+	if (x[j].getElementsByTagName("city")[0].childNodes[0].nodeValue == "인천")
+	{
+		for (i=0;i<3;i++)
+		{
+			document.write("<td align='middle'>");
+			document.write("<font color='blue'>");
+			document.write(y[i].getElementsByTagName("tmn")[0].childNodes[0].nodeValue);
+			document.write("</font>/<font color='orange'>");
+			document.write(y[i].getElementsByTagName("tmx")[0].childNodes[0].nodeValue);
+			document.write("</font>");
+			document.write("</td>");
+		}
+	}
+}
+document.write("</tr>");
+document.write("</table>");
+</script>
+
+</body>
+</html>
