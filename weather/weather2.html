@@ -11,7 +11,7 @@ else
   xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
   }
 
-// ÆÄ¶ó¹ÌÅÍ·Î ¹ŞÀº Áö¿ª°ª¿¡ µû¶ó ±â»óÃ» Áö¿ª¿¹º¸¸¦ °¡Á®¿È.
+// íŒŒë¼ë¯¸í„°ë¡œ ë°›ì€ ì§€ì—­ê°’ì— ë”°ë¼ ê¸°ìƒì²­ ì§€ì—­ì˜ˆë³´ë¥¼ ê°€ì ¸ì˜´.
 xmlhttp.open("GET","http://www.kma.go.kr/weather/forecast/mid-term-xml.jsp?stnId=109",false);
 xmlhttp.send();
 xmlDoc=xmlhttp.responseXML; 
@@ -25,7 +25,7 @@ document.write(y[6].getElementsByTagName("tmx")[0].childNodes[0].nodeValue+"<br>
 document.write("<tr>");
 for (j=0;j<x.length;j++)
 {	
-	if (x[j].getElementsByTagName("city")[0].childNodes[0].nodeValue == "ÀÎÃµ")
+	if (x[j].getElementsByTagName("city")[0].childNodes[0].nodeValue == "ì¸ì²œ")
 	{
 		for (i=0;i<3;i++)
 		{
@@ -41,18 +41,18 @@ document.write("</tr>");
 document.write("<tr>");
 for (j=0;j<x.length;j++)
 {
-	if (x[j].getElementsByTagName("city")[0].childNodes[0].nodeValue == "ÀÎÃµ")
+	if (x[j].getElementsByTagName("city")[0].childNodes[0].nodeValue == "ì¸ì²œ")
 	{
 		for (i=0;i<3;i++)
 		{
 			document.write("<td align='middle'>");
-			if (y[i].getElementsByTagName("wf")[0].childNodes[0].nodeValue == "±¸¸§Á¶±İ")
+			if (y[i].getElementsByTagName("wf")[0].childNodes[0].nodeValue == "êµ¬ë¦„ì¡°ê¸ˆ")
 			{
-				document.write("<img src='./img/±¸¸§Á¶±İ.png' alt='±¸¸§Á¶±İ'>");
+				document.write("<img src='./img/êµ¬ë¦„ì¡°ê¸ˆ.png' alt='êµ¬ë¦„ì¡°ê¸ˆ'>");
 			}
-			if (y[i].getElementsByTagName("wf")[0].childNodes[0].nodeValue == "Èå¸®°í ºñ" || y[i].getElementsByTagName("wf")[0].childNodes[0].nodeValue == "±¸¸§¸¹°í ºñ")
+			if (y[i].getElementsByTagName("wf")[0].childNodes[0].nodeValue == "íë¦¬ê³  ë¹„" || y[i].getElementsByTagName("wf")[0].childNodes[0].nodeValue == "êµ¬ë¦„ë§ê³  ë¹„")
 			{
-				document.write("<img src='./img/Èå¸®°íºñ.png' alt='Èå¸®°íºñ'>");
+				document.write("<img src='./img/íë¦¬ê³ ë¹„.png' alt='íë¦¬ê³ ë¹„'>");
 			}
 			document.write("</td>");
 		}
@@ -62,7 +62,7 @@ document.write("</tr>");
 document.write("<tr>");
 for (j=0;j<x.length;j++)
 {
-	if (x[j].getElementsByTagName("city")[0].childNodes[0].nodeValue == "ÀÎÃµ")
+	if (x[j].getElementsByTagName("city")[0].childNodes[0].nodeValue == "ì¸ì²œ")
 	{
 		for (i=0;i<3;i++)
 		{
