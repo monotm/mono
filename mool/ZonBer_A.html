@@ -4,7 +4,7 @@
         <meta name="theme-color" content="#000000">
             <body bgcolor = "#000000" text="#01DF74">
               <font size="5px">
-                <font face="³ª´®°íµñ">
+                <font face="ë‚˜ëˆ”ê³ ë”•">
                 <font weight="bold">
         <style>
             table {border-collapse: collapse}
@@ -12,21 +12,24 @@
         </style>
         <script src="https://code.jquery.com/jquery-1.4.4.min.js"></script>
         <script>
-            // Àü¿ª º¯¼ö ¼¼ÆÃ
+            // ì „ì—­ ë³€ìˆ˜ ì„¸íŒ…
             var usd = 0;
             var alert_array = new Array();
             
-            // Ãµ´ÜÀ§ ÄŞ¸¶ ÇÔ¼ö
+            // ì²œë‹¨ìœ„ ì½¤ë§ˆ í•¨ìˆ˜
             function numberWithCommas(x) {
                 return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
             }
-            // ¼ıÀÚ ¿Ü ¹®ÀÚ¿­ Á¦°Å ÇÔ¼ö
+            // ìˆ«ì ì™¸ ë¬¸ìì—´ ì œê±° í•¨ìˆ˜
             function numberDeleteChar(x) {
                 return x.toString().replace(/[^0-9]+/g, '');
+
                   
             }
             
-            // ´Ş·¯ È¯À² ÇÔ¼ö
+
+
+            // ë‹¬ëŸ¬ í™˜ìœ¨ í•¨ìˆ˜
 function usdkrw(){
 $.get('http://api.manana.kr/exchange/rate/KRW/USD.json', function(data) {
 data = data[0];
@@ -34,7 +37,8 @@ usd = data['rate'];
 document.getElementById("usdkrw").innerHTML=('$1 = ' + usd);
 });
 }
-            // Coinmarketcap ÇÔ¼ö
+
+            // Coinmarketcap í•¨ìˆ˜
             function coinma(){
                 $.get('https://api.coinmarketcap.com/v2/global/?convert=KRW', function(data) {
                     var coinma_usd = parseFloat(data['data']['quotes']['USD']['total_market_cap']);
@@ -43,12 +47,13 @@ var display_1 = parseFloat(data['data']['quotes']['KRW']['total_market_cap'] / 1
 var display_2 = (display_1*100000) - temp ;
 var display_3 = (display_2/10000) ;
                     var coinma_per = parseFloat(data['data']['bitcoin_percentage_of_market_cap']);
-                    $('#coinma_USD').html('' + numberWithCommas(coinma_usd) + ' ¿ø'); // °Å·¡¼Ò ½Ã¼¼ Á¤º¸ Ç¥¿¡ °ª ¼¼ÆÃ
-$('#coinma_KRW').html('' + numberWithCommas(temp.toFixed(0) ) + '¾ï¿ø ');
+                    $('#coinma_USD').html('' + numberWithCommas(coinma_usd) + ' ì›'); // ê±°ë˜ì†Œ ì‹œì„¸ ì •ë³´ í‘œì— ê°’ ì„¸íŒ…
+$('#coinma_KRW').html('' + numberWithCommas(temp.toFixed(0) ) + 'ì–µì› ');
                     $('#coinma_PER').html('' + numberWithCommas(coinma_per) + ' %');
                 });
             }
-            // Coinmarketcap ÇÔ¼ö
+
+            // Coinmarketcap í•¨ìˆ˜
             function coinma_512(){
                 $.get('https://api.coinmarketcap.com/v2/ticker/512/?convert=KRW', function(data) {
                     var coinmaprice_krw = parseFloat(data['data']['quotes']['KRW']['price'] );
@@ -57,90 +62,94 @@ var temp = parseFloat(data['data']['quotes']['KRW']['market_cap'] / 100000000 );
 var display_1 = parseFloat(data['data']['quotes']['KRW']['market_cap'] / 1000000000000 );
 var display_2 = (display_1*100000) - temp ;
 var display_3 = (display_2/10000) ;
-                    $('#coinma_512_KRW').html('' + numberWithCommas(coinmaprice_krw .toFixed(0) ) + ' ¿ø');
-                    $('#coinma_v24_KRW').html('' + numberWithCommas(coinmavolume_24h_krw .toFixed(0) ) + ' ¾ï¿ø');
-$('#coinma_cap_KRW').html('' + numberWithCommas(temp.toFixed(0) ) + ' ¾ï¿ø ');
+                    $('#coinma_512_KRW').html('' + numberWithCommas(coinmaprice_krw .toFixed(0) ) + ' ì›');
+                    $('#coinma_v24_KRW').html('' + numberWithCommas(coinmavolume_24h_krw .toFixed(0) ) + ' ì–µì›');
+$('#coinma_cap_KRW').html('' + numberWithCommas(temp.toFixed(0) ) + ' ì–µì› ');
+
                 });
             }
+
             
-
-
-                          // upbit ÇÔ¼ö
-            function upbitbtc(){
-                $.get('https://api.upbit.com/v1/ticker?markets=KRW-BTC', function(data) {
-                    var upbit_btc = parseFloat(data[0].trade_price);
-                  var upbit_btc_24 = parseFloat(data[0].acc_trade_price_24h /100000000 );
-                    $('#upbit_BTC').html('' + numberWithCommas(upbit_btc) + ' ¿ø');
-                    $('#upbit_BTC_24').html('' + numberWithCommas(upbit_btc_24 .toFixed(0) ) + '¾ï¿ø');
+            // ì½”ì¸ì› í•¨ìˆ˜
+            function coinone(){
+                $.get('https://api.coinone.co.kr/ticker?currency=all', function(data) {
+                    var coinone_btc = parseFloat(data['btc']['last']);
+                    var coinone_eth = parseFloat(data['eth']['last']);
+                    var coinone_xrp = parseFloat(data['xrp']['last']);
+                    $('#coinone_BTC').html('' + numberWithCommas(coinone_btc) + ' ì›'); // ê±°ë˜ì†Œ ì‹œì„¸ ì •ë³´ í‘œì— ê°’ ì„¸íŒ…
+                    $('#coinone_ETH').html('' + numberWithCommas(coinone_eth) + ' ì›');
+                    $('#coinone_XRP').html('' + numberWithCommas(coinone_xrp) + ' ì›');
                 });
-
             }
-            // ºø½æ ÇÔ¼ö (Å©·Î½ºµµ¸ŞÀÎ ¹®Á¦·Î ÀÍ½º¿¡¼­¸¸ µÊ)
+            // ë¹—ì¸ í•¨ìˆ˜ (í¬ë¡œìŠ¤ë„ë©”ì¸ ë¬¸ì œë¡œ ìµìŠ¤ì—ì„œë§Œ ë¨)
             function bithumb(){
                 $.get('https://api.bithumb.com/public/ticker/ALL', function(data) {
                     var bithumb_btc = parseFloat(data['data']['BTC']['closing_price']);
                     var bithumb_eth = parseFloat(data['data']['ETH']['closing_price']);
                     var bithumb_xrp = parseFloat(data['data']['XRP']['closing_price']);
-                    $('#bithumb_BTC').html('' + numberWithCommas(bithumb_btc) + ' ¿ø'); // °Å·¡¼Ò ½Ã¼¼ Á¤º¸ Ç¥¿¡ °ª ¼¼ÆÃ
-                    $('#bithumb_ETH').html('' + numberWithCommas(bithumb_eth) + ' ¿ø');
-                    $('#bithumb_XRP').html('' + numberWithCommas(bithumb_xrp) + ' ¿ø');
+                    $('#bithumb_BTC').html('' + numberWithCommas(bithumb_btc) + ' ì›'); // ê±°ë˜ì†Œ ì‹œì„¸ ì •ë³´ í‘œì— ê°’ ì„¸íŒ…
+                    $('#bithumb_ETH').html('' + numberWithCommas(bithumb_eth) + ' ì›');
+                    $('#bithumb_XRP').html('' + numberWithCommas(bithumb_xrp) + ' ì›');
                 });
             }
-            // upbit ÇÔ¼ö
+
+            // upbit í•¨ìˆ˜
             function upbit(){
                 $.get('https://api.upbit.com/v1/ticker?markets=KRW-XLM', function(data) {
                     var upbit_xlm = parseFloat(data[0].trade_price);
                   var upbit_xlm_24 = parseFloat(data[0].acc_trade_price_24h /100000000 );
-                    $('#upbit_XLM').html('' + numberWithCommas(upbit_xlm) + ' ¿ø');
-                    $('#upbit_XLM_24').html('' + numberWithCommas(upbit_xlm_24 .toFixed(0) ) + '¾ï¿ø');
+                    $('#upbit_XLM').html('' + numberWithCommas(upbit_xlm) + ' ì›');
+                    $('#upbit_XLM_24').html('' + numberWithCommas(upbit_xlm_24 .toFixed(0) ) + 'ì–µì›');
                 });
             }
-            // upbit ÇÔ¼ö
+
+            // upbit í•¨ìˆ˜
             function upbitxrp(){
                 $.get('https://api.upbit.com/v1/ticker?markets=KRW-XRP', function(data) {
                     var upbit_xrp = parseFloat(data[0].trade_price);
-                    $('#upbit_XRP').html('' + numberWithCommas(upbit_xrp) + ' ¿ø');
+                    $('#upbit_XRP').html('' + numberWithCommas(upbit_xrp) + ' ì›');
                 });
             }
-            // ÇöÀç ½Ã°£ °»½Å
+
+            // í˜„ì¬ ì‹œê°„ ê°±ì‹ 
             function CurrentTime() {
                 var d = new Date();
                 $("#lastUpdate").html(d.toString());
             }
             
-            // °»½Å ÇÔ¼ö
+            // ê°±ì‹  í•¨ìˆ˜
             function proc() {
                 try {
-                    usdkrw(); // È¯À²
+                    usdkrw(); // í™˜ìœ¨
                     coinma(); // 
                     coinma_512(); // 
-                    upbitbtc(); // 
-                    bithumb(); // ºø½æ
+                    coinone(); // ì½”ì¸ì›
+                    bithumb(); // ë¹—ì¸
                     upbit(); // 
                     upbitxrp(); // 
-                    alert_start(); // ¾Ë¶÷ È®ÀÎ
-                    CurrentTime(); // °»½Å ½Ã°£
+                    alert_start(); // ì•ŒëŒ í™•ì¸
+                    CurrentTime(); // ê°±ì‹  ì‹œê°„
                 } catch(e){
                     
                 } finally {
-                    setTimeout("proc()", 10000); //10ÃÊÈÄ Àç½ÃÀÛ
+                    setTimeout("proc()", 10000); //10ì´ˆí›„ ì¬ì‹œì‘
                 }
             }
         </script>
     </head>
     <body onLoad="proc()">
-        <!-- È¯À² Á¤º¸ -->
+        <!-- í™˜ìœ¨ ì •ë³´ -->
                       <font size="5px">
-        <p>&nbsp;¾÷ºñÆ® &nbsp;&nbsp;&nbsp;XLM&nbsp;: <span id="upbit_XLM"></span> </p>
-        <p>&nbsp;ºñÆ®·º½º XLM&nbsp;: <span id="coinma_512_KRW"></span> </p>
+        <p>&nbsp;ì—…ë¹„íŠ¸ &nbsp;&nbsp;&nbsp;XLM&nbsp;: <span id="upbit_XLM"></span> </p>
+        <p>&nbsp;ë¹„íŠ¸ë ‰ìŠ¤ XLM&nbsp;: <span id="coinma_512_KRW"></span> </p>
                               <font size="5px">
-        <p>&nbsp;XLM&nbsp;24H °Å·¡·® : <span id="upbit_XLM_24" ></span> </p>
+        <p>&nbsp;XLM&nbsp;24H ê±°ë˜ëŸ‰ : <span id="upbit_XLM_24" ></span> </p>
                       <font size="5px">
-        <p>&nbsp;¾÷ºñÆ®&nbspBTC&nbsp;: <span id="upbit_BTC"></span> </p>
-        <!--        <p>&nbsp;ºø½æ&nbsp;&nbsp;&nbsp;&nbsp;XRP&nbsp;: <span id="bithumb_XRP"></span> </p>  -->
-        <p>&nbsp;¾÷ºñÆ® XRP&nbsp;: <span id="upbit_XRP"></span> </p>
+        <p>&nbsp;ì½”ì¸ì›&nbspBTC&nbsp;: <span id="coinone_BTC"></span> </p>
+        <!--        <p>&nbsp;ë¹—ì¸&nbsp;&nbsp;&nbsp;&nbsp;XRP&nbsp;: <span id="bithumb_XRP"></span> </p>  -->
+        <p>&nbsp;ì—…ë¹„íŠ¸ XRP&nbsp;: <span id="upbit_XRP"></span> </p>
                       <font size="5px">
-        <p>&nbsp;½Ã°¡ÃÑ¾×&nbsp;: <span id="coinma_KRW" ></span> </p>        
+        <p>&nbsp;ì‹œê°€ì´ì•¡&nbsp;: <span id="coinma_KRW" ></span> </p>        
     </body>
     
 </html>
