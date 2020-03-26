@@ -36,7 +36,7 @@ document.getElementById("usdkrw").innerHTML=('$1 = ' + usd);
 }
             // Coinmarketcap 함수
             function coinma(){
-                $.get('https://api.coinmarketcap.com/v2/global/?convert=KRW', function(data) {
+                $.get('https://api.binance.com/api/v1/ticker/24hr', function(data) {
                     var coinma_usd = parseFloat(data['data']['quotes']['USD']['total_market_cap']);
 var temp = parseFloat(data['data']['quotes']['KRW']['total_market_cap'] / 100000000 );
 var display_1 = parseFloat(data['data']['quotes']['KRW']['total_market_cap'] / 1000000000000 );
