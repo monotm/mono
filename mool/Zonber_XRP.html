@@ -36,7 +36,7 @@ document.getElementById("usdkrw").innerHTML=('$1 = ' + usd);
 }
             // Coinmarketcap 함수
             function coinma(){
-                $.get('https://api.binance.com/api/v1/ticker/24hr', function(data) {
+                $.get('https://api.bitfinex.com/v2/ticker/tXRPUSD', function(data) {
                     var coinma_usd = parseFloat(data['data']['quotes']['XRPUSDT']['lastPrice']);
 var temp = parseFloat(data['data']['quotes']['XRPUSDT']['lastPrice'] / 100000000 );
 var display_1 = parseFloat(data['data']['quotes']['XRPUSDT']['lastPrice'] / 1000000000000 );
