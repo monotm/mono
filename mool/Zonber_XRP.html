@@ -36,12 +36,9 @@ document.getElementById("usdkrw").innerHTML=('$1 = ' + usd);
 }
             // Coinmarketcap 함수
                             function coinma(){
-                $.get('https://api.upbit.com/v1/ticker?markets=KRW-XRP', function(data) {
-                    var coinma_usd = parseFloat(data[0].trade_price);
-                
-                    var coinma_usd_24 = parseFloat(data[0].acc_trade_price_24h /100000 );
+                $.get('https://api.binance.com/api/v1/ticker/price?symbol=XRPUSDT', function(data) {
+                    var coinma_usd = parseFloat(data['price'] * 1200 );
                     $('#coinma_USD').html('' + numberWithCommas(coinma_usd) + ' 원');
-                    $('#upbit_XRP_24').html('' + numberWithCommas(upbit_xrp_24 .toFixed(0) ) + '억원');
                 });
             }
             // Coinmarketcap 함수
@@ -139,7 +136,7 @@ $('#coinma_cap_KRW').html('' + numberWithCommas(temp.toFixed(0) ) + ' 억원 ');
         <!-- 환율 정보 -->
                       <font size="5px">
         <p>&nbsp;업비트 &nbsp;&nbsp;&nbsp;XRP&nbsp;: <span id="upbit_XRP"></span> </p>
-        <p>&nbsp;바이낸스 XRP&nbsp;: <span id="coinma_52_KRW"></span> </p>
+        <p>&nbsp;바이낸스 XRP&nbsp;: <span id="coinma_USD"></span> </p>
                               <font size="5px">
         <p>&nbsp;XRP&nbsp;24H 거래량 : <span id="upbit_XRP_24" ></span> </p>
                       <font size="5px">
