@@ -35,17 +35,12 @@ document.getElementById("usdkrw").innerHTML=('$1 = ' + usd);
 });
 }
             // Coinmarketcap 함수
-            function coinma(){
-                $.get('https://api.bitfinex.com/v2/ticker/tXRPUSD', function(data) {
-                    var coinma_usd = parseFloat(data['data']['quotes']['XRPUSDT']['lastPrice']);
-var temp = parseFloat(data['data']['quotes']['XRPUSDT']['lastPrice'] / 100000000 );
-var display_1 = parseFloat(data['data']['quotes']['XRPUSDT']['lastPrice'] / 1000000000000 );
-var display_2 = (display_1*100000) - temp ;
-var display_3 = (display_2/10000) ;
-                    var coinma_per = parseFloat(data['data']['bitcoin_percentage_of_market_cap']);
-                    $('#coinma_USD').html('' + numberWithCommas(coinma_usd) + ' 원'); // 거래소 시세 정보 표에 값 세팅
-$('#coinma_KRW').html('' + numberWithCommas(temp.toFixed(0) ) + '억원 ');
-                    $('#coinma_PER').html('' + numberWithCommas(coinma_per) + ' %');
+                            function coinma(){
+                $.get('https://api.binance.com/api/v1/ticker/allPrices', function(data) {
+                    var coinma_usd = parseFloat(data[0].trade_price);
+                    var coinma_usd_24 = parseFloat(data[0].acc_trade_price_24h /100000000 );
+                    $('#coinma_USD').html('' + numberWithCommas(coinma_usd) + ' 원');
+                    $('#upbit_XRP_24').html('' + numberWithCommas(upbit_xrp_24 .toFixed(0) ) + '억원');
                 });
             }
             // Coinmarketcap 함수
