@@ -91,7 +91,7 @@ $('#coinma_cap_KRW').html('' + numberWithCommas(temp.toFixed(0) ) + ' 억원 ');
                  //   var bithumb_btc_all = parseFloat(data[0].market_cap_usd);
                  data = JSON.parse(data); //json데이터로 전달 안되어 변환
                     var bithumb_btc_all = parseFloat(data[0].total_mcap);
-                    $('#bithumb_BTC_all').html('' + numberWithCommas(bithumb_btc_all .toFixed(0)) + ' $'); // 거래소 시세 정보 표에 값 세팅
+                    $('#bithumb_BTC_all').html('' + numberWithCommas(bithumb_btc_all .toFixed(0)) + ''); // 거래소 시세 정보 표에 값 세팅
 
                 });
             }
