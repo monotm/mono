@@ -32,8 +32,8 @@ function usdkrw(){
 $.get('https://api.manana.kr/exchange/rate/KRW/USD.json', function(data) {
 //data = data[0];
 //usd = data['rate'];
-//var usd = parseFloat(data['rate'] );
-var usd = parseFloat(data[0].rate);
+//var usd = parseFloat(data[0].rate);
+usd = parseFloat(data[0].rate);
 $('#USDKRW').html('' + numberWithCommas(usd .toFixed(0)) );
 //usd = parseFloat(data.split(",")[1]); // 전역변수에 저장하여 활용
 //$('#USDKRW').html('환율 : $1 = \\' + usd);
@@ -47,7 +47,7 @@ $('#USDKRW').html('' + numberWithCommas(usd .toFixed(0)) );
 
                $.get('https://poloniex.com/public?command=returnTicker', function(data) {
                     var coinma_usd = parseFloat(data['USDT_XRP']['last']  );                   
-                    $('#coinma_USD').html('' + numberWithCommas(Math.round(1220 * coinma_usd) + ' 원'));
+                    $('#coinma_USD').html('' + numberWithCommas(Math.round(usd * coinma_usd) + ' 원'));
                    // $('#coinma_USD').html('\\ ' + numberWithCommas(Math.round(usd * coinma_usd)));
                 });
             }
@@ -92,7 +92,7 @@ $('#coinma_cap_KRW').html('' + numberWithCommas(temp.toFixed(0) ) + ' 억원 ');
                //     $.get('https://api.coinlore.net/api/ticker/?id=90', function(data) {
                  //   var bithumb_btc_all = parseFloat(data[0].market_cap_usd);
                  data = JSON.parse(data); //json데이터로 전달 안되어 변환
-                    var bithumb_btc_all = parseFloat(data[0].total_mcap /1000000 *1220);
+                    var bithumb_btc_all = parseFloat(data[0].total_mcap /1000000 * usd);
                     $('#bithumb_BTC_all').html('' + numberWithCommas(bithumb_btc_all .toFixed(0)) + ''); // 거래소 시세 정보 표에 값 세팅
 
                 });
