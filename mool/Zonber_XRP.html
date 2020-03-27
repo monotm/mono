@@ -30,6 +30,7 @@
 function usdkrw(){
     async: false, //동기식 처리
 $.get('http://api.manana.kr/exchange/rate/KRW/USD.json', function(data) {
+                         data = JSON.parse(data); //json데이터로 전달 안되어 변환
 data = data[0];
 usd = data['rate'];
 //usd = parseFloat(data.split(",")[1]); // 전역변수에 저장하여 활용
@@ -41,9 +42,9 @@ document.getElementById("usdkrw").innerHTML=('$1 = ' + usd);
 
             // Coinmarketcap 함수
                             function coinma(){
-//                $.get('https://api.binance.com/api/v1/ticker/price?symbol=XRPUSDT', function(data) {
+
                $.get('https://poloniex.com/public?command=returnTicker', function(data) {
-                    var coinma_usd = parseFloat(data['USDT_XRP']['last'] * 1217 );
+                    var coinma_usd = parseFloat(data['USDT_XRP']['last'] * 1210 );                   
                     $('#coinma_USD').html('' + numberWithCommas(Math.round(coinma_usd) + ' 원'));
                    // $('#coinma_USD').html('\\ ' + numberWithCommas(Math.round(usd * coinma_usd)));
                 });
@@ -85,11 +86,12 @@ $('#coinma_cap_KRW').html('' + numberWithCommas(temp.toFixed(0) ) + ' 억원 ');
             }
             // 빗썸 함수 (크로스도메인 문제로 익스에서만 됨)
                         function bithumball(){
-               // $.get('https://api.coinlore.net/api/global/?total_mcap', function(data) {
-                    $.get('https://api.coinlore.net/api/ticker/?id=90', function(data) {
-                    var bithumb_btc_all = parseFloat(data[0].market_cap_usd);
-    //                var bithumb_btc_all = parseFloat(data[0].total_mcap);
-                    $('#bithumb_BTC_all').html('' + numberWithCommas(bithumb_btc_all .toFixed(0)) + ' '); // 거래소 시세 정보 표에 값 세팅
+                $.get('https://api.coinlore.net/api/global/', function(data) {
+               //     $.get('https://api.coinlore.net/api/ticker/?id=90', function(data) {
+                 //   var bithumb_btc_all = parseFloat(data[0].market_cap_usd);
+                 data = JSON.parse(data); //json데이터로 전달 안되어 변환
+                    var bithumb_btc_all = parseFloat(data[0].total_mcap);
+                    $('#bithumb_BTC_all').html('' + numberWithCommas(bithumb_btc_all .toFixed(0)) + ' $'); // 거래소 시세 정보 표에 값 세팅
 
                 });
             }
