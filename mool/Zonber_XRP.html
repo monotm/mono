@@ -46,8 +46,10 @@ $('#USDKRW').html('' + numberWithCommas(usd) );
             // Coinmarketcap 함수
                             function coinma(){
 
-               $.get('https://poloniex.com/public?command=returnTicker', function(data) {
-                    var coinma_usd = parseFloat(data['USDT_XRP']['last']  );                   
+                $.get('https://www.bitstamp.net/api/v2/ticker/xrpusd', function(data) {
+                    var coinma_usd = parseFloat(data['last']  );
+//                $.get('https://poloniex.com/public?command=returnTicker', function(data) {
+//                    var coinma_usd = parseFloat(data['USDT_XRP']['last']  );                 
                     $('#coinma_USD').html('' + numberWithCommas(Math.round(usd * coinma_usd) + ' 원'));
                    // $('#coinma_USD').html('\\ ' + numberWithCommas(Math.round(usd * coinma_usd)));
                 });
