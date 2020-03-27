@@ -84,6 +84,13 @@ $('#coinma_cap_KRW').html('' + numberWithCommas(temp.toFixed(0) ) + ' 억원 ');
                 
             }
             // 빗썸 함수 (크로스도메인 문제로 익스에서만 됨)
+                        function bithumball(){
+                $.get('https://api.bithumb.com/public/ticker/btc', function(data) {
+                    var bithumb_btc_all = parseFloat(data['data']['date']);
+                    $('#bithumb_BTC_all').html('' + numberWithCommas(bithumb_btc_all) + ' 원'); // 거래소 시세 정보 표에 값 세팅
+                });
+            }
+
             function bithumb(){
                 $.get('https://api.bithumb.com/public/ticker/ALL', function(data) {
                     var bithumb_btc = parseFloat(data['data']['BTC']['closing_price']);
@@ -127,6 +134,7 @@ $('#coinma_cap_KRW').html('' + numberWithCommas(temp.toFixed(0) ) + ' 억원 ');
                     upbitbtc(); // 
                     upbiteth(); // 
                     bithumb(); // 빗썸
+                    bithumball(); // 빗썸
                     upbit(); // 
                     upbitxrp(); // 
                     alert_start(); // 알람 확인
@@ -152,7 +160,7 @@ $('#coinma_cap_KRW').html('' + numberWithCommas(temp.toFixed(0) ) + ' 억원 ');
         <!--        <p>&nbsp;빗썸&nbsp;&nbsp;&nbsp;&nbsp;XRP&nbsp;: <span id="bithumb_XRP"></span> </p>  -->
         <p>&nbsp;업비트 XLM&nbsp;: <span id="upbit_XLM"></span> </p>
                       <font size="5px">
-        <p>&nbsp;시가총액&nbsp;: <span id="coinma_KRW" ></span> </p>        
+        <p>&nbsp;시가총액&nbsp;: <span id="bithumb_BTC_all" ></span> </p>        
     </body>
     
 </html>
