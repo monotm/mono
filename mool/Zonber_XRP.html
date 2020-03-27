@@ -34,7 +34,8 @@ $.get('https://api.manana.kr/exchange/rate/KRW/USD.json', function(data) {
 //usd = data['rate'];
 //var usd = parseFloat(data[0].rate);
 usd = parseFloat(data[0].rate);
-$('#USDKRW').html('' + numberWithCommas(usd .toFixed(0)) );
+$('#USDKRW').html('' + numberWithCommas(usd) );
+//$('#USDKRW').html('' + numberWithCommas(usd .toFixed(0)) );
 //usd = parseFloat(data.split(",")[1]); // 전역변수에 저장하여 활용
 //$('#USDKRW').html('환율 : $1 = \\' + usd);
 //document.getElementById("usdkrw").innerHTML=('$1 = ' + usd);
