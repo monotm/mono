@@ -45,9 +45,14 @@ $('#USDKRW').html('' + numberWithCommas(usd) );
 
             // Coinmarketcap 함수
                             function coinma(){
-
-                $.get('https://www.bitstamp.net/api/v2/ticker/xrpusd', function(data) {
-                    var coinma_usd = parseFloat(data['last']  );
+                $.get('https://poloniex.com/public?command=returnTicker', function(data) {
+//                 data = JSON.parse(data); //json데이터로 전달 안되어 변환
+//var response = UrlFetchApp.fetch(url, {'muteHttpExceptions': true});
+//var json = response.getContentText();
+//var data = JSON.parse(json);
+                    var coinma_usd = parseFloat(data['USDT_XRP']['last']  );                 
+//                $.get('https://www.bitstamp.net/api/v2/ticker/xrpusd', function(data) {
+//                    var coinma_usd = parseFloat(data['last']  );
 //                $.get('https://poloniex.com/public?command=returnTicker', function(data) {
 //                    var coinma_usd = parseFloat(data['USDT_XRP']['last']  );                 
                     $('#coinma_USD').html('' + numberWithCommas(Math.round(usd * coinma_usd) + ' 원'));
@@ -170,7 +175,9 @@ $('#coinma_cap_KRW').html('' + numberWithCommas(temp.toFixed(0) ) + ' 억원 ');
         <!--        <p>&nbsp;빗썸&nbsp;&nbsp;&nbsp;&nbsp;XRP&nbsp;: <span id="bithumb_XRP"></span> </p>  -->
         <p>&nbsp;업비트 XLM&nbsp;: <span id="upbit_XLM"></span> </p>
                       <font size="5px">
-        <p>&nbsp;시가총액&nbsp;: <span id="bithumb_BTC_all" ></span> </p>        
+        <p>&nbsp;시가총액&nbsp;: <span id="bithumb_BTC_all" ></span> </p>     
+                      <font size="3px">
+        <p>&nbsp;빗썸 XRP&nbsp;: <span id="bithumb_XRP" ></span> </p>             
     </body>
     
 </html>
