@@ -61,10 +61,10 @@ $('#USDKRW').html('' + numberWithCommas(usd) );
             if (!json['event']) {
             if (json.length == 2) {
             if (json[1].length == 30) {
-            $('#bitfi_USD').html('' + numberWithCommas((usd * json[1][0][3] + ' 원')));
+            $('#bitfi_USD').html('' + numberWithCommas((usd * json[1][0][3] .toFixed(4) + ' 원')));
             }
             } else if (json.length == 3) {
-            $('#bitfi_USD').html('' + numberWithCommas((usd * json[2][3] + ' 원')));
+            $('#bitfi_USD').html('' + numberWithCommas((usd * json[2][3] .toFixed(4) + ' 원')));
             }
             }
             }
