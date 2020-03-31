@@ -25,6 +25,17 @@
                 return x.toString().replace(/[^0-9]+/g, '');
                   
             }
+
+            // 소수점 함수
+function deleteThirdDecimals(x) {
+var stringX = x.toString();
+if (stringX.includes('.')) {
+return stringX.substring(0, stringX.indexOf('.') + 2)
+
+} else {
+return x.toString();
+}
+}
             
             // 달러 환율 함수
 function usdkrw(){
@@ -61,10 +72,10 @@ $('#USDKRW').html('' + numberWithCommas(usd) );
             if (!json['event']) {
             if (json.length == 2) {
             if (json[1].length == 30) {
-            $('#bitfi_USD').html('' + numberWithCommas((usd * json[1][0][3] .toFixed(4) + ' 원')));
+            $('#bitfi_USD').html('' + deleteThirdDecimals((usd * json[1][0][3] + ' 원')));
             }
             } else if (json.length == 3) {
-            $('#bitfi_USD').html('' + numberWithCommas((usd * json[2][3] .toFixed(4) + ' 원')));
+            $('#bitfi_USD').html('' + deleteThirdDecimals((usd * json[2][3] + ' 원')));
             }
             }
             }
@@ -192,7 +203,7 @@ $('#coinma_cap_KRW').html('' + numberWithCommas(temp.toFixed(0) ) + ' 억원 ');
         <!-- 환율 정보 -->
                       <font size="5px">
         <p>&nbsp;업비트 &nbsp;&nbsp;&nbsp;XRP&nbsp;: <span id="upbit_XRP"></span> </p>
-        <p>&nbsp;비파 XRP&nbsp;: <span id="bitfi_USD"></span> </p>
+        <p>&nbsp;비트파이넥스 XRP&nbsp;: <span id="bitfi_USD"></span> </p>
                               <font size="5px">
         <p>&nbsp;XRP&nbsp;24H 거래량 : <span id="upbit_XRP_24" ></span> </p>
                       <font size="5px">
@@ -203,7 +214,7 @@ $('#coinma_cap_KRW').html('' + numberWithCommas(temp.toFixed(0) ) + ' 억원 ');
                       <font size="5px">
         <p>&nbsp;시가총액&nbsp;: <span id="bithumb_BTC_all" ></span> </p>     
                       <font size="3px">
-        <p>&nbsp;빗썸 XRP&nbsp;: <span id="bithumb_XRP" ></span> </p>             
+        <p>&nbsp;&nbsp;빗썸 XRP&nbsp;: <span id="bithumb_XRP" ></span> </p>             
     </body>
     
 </html>
