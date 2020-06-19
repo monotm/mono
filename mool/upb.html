@@ -1,63 +1,15 @@
 <!DOCTYPE html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <meta name="theme-color" content="#000000">
+            <body bgcolor = "#000000" text="#01DF74">
+              <font size="5px">
+                <font face="나눔고딕">
+                <font weight="bold">
+                    
+<!DOCTYPE html>
 <html>
-<head>
-    <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
-</head>
-<body>
-    <div id="content"></div>
-    <script>
-        /**
-        * Test harness to find out the best method for dynamically loading a
-        * html page into your app.
-        */
-        var test_times  = {};
-        var test_page   = 'http://www.naver.com';
-        var content_div = document.getElementById('content');
- 
-        // TEST 1 = use jQuery to load in testpage.htm and time it.
-        
-        function test_()
-        {
-            var start = new Date().getTime();
-            $(content_div).load(test_page, function() {
-                //alert(new Date().getTime() - start);
-            });
-        }
- 
-        // 1044
-        
- 
-        // TEST 2 = use <object> to load in testpage.htm and time it.
-        /*
-        function test_()
-        {
-            start = new Date().getTime();
-            content_div.innerHTML = '<object type="text/html" data="' + test_page +
-            '" onload="alert(new Date().getTime() - start)"></object>'
-        }
-        //1579
-        */
- 
-        // TEST 3 = use httpObject to load in testpage.htm and time it.
-        /*
-       function test_()
-       {
-          var xmlHttp = new XMLHttpRequest();
-           xmlHttp.onreadystatechange = function() {
-               if (xmlHttp.readyState == 4 && xmlHttp.status == 200)
-                {
-                   content_div.innerHTML = xmlHttp.responseText;
-                   alert(new Date().getTime() - start);
-                }
-            };
-           // start = new Date().getTime();
-            xmlHttp.open("GET", test_page, true); // true for asynchronous
-            xmlHttp.send(null);
-            // 1039
-        }*/
- 
-        // Main - run tests
-        test_();
-    </script>
-</body>
+    <body>
+        <iframe src="https://www.gdac.com/exchange/XRP/KRW" width="100%" height="800" frameborder="0" scrolling="no"></iframe>
+    </body>
 </html>
