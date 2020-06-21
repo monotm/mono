@@ -89,6 +89,17 @@
                 });
             }
 
+            // upbit 함수
+            function upbitxrp24(){
+                $.get('https://api.upbit.com/v1/ticker?markets=KRW-XRP', function(data) {
+                    var upbit_xrpp = parseFloat(data[0].trade_price);
+                    var upbit_xrp_24 = parseFloat(data[0].acc_trade_price_24h /100000000 );
+                    $('#upbit_XRPP').html('' + numberWithCommas(upbit_xrpp) + ' 원');
+                    $('#upbit_XRP_24').html('' + numberWithCommas(upbit_xrp_24 .toFixed(0) ) + '억원');
+                });
+            }
+
+
             // 현재 시간 갱신
             function CurrentTime() {
                 var d = new Date();
@@ -99,6 +110,7 @@
             function proc() {
                 try {
                     upbitxrp(); //
+                    upbitxrp24(); //                    
                     gdacxrp(); //
                     usdkrw(); //
                     bithumball(); //                     
@@ -114,20 +126,21 @@
         </script>
     </head>
     <body onLoad="proc()">
-                        <font size="5px" color="CE6029"> 
+                        <font size="5px" color="01DF74"> 
         <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;매수잔량&nbsp;: <span id="upbit_XRP_"></span> </p>
         <p>&nbsp;업비트&nbsp;XRP&nbsp;: <span id="upbit_XRP"></span> </p>
-                        <font size="5px" color="#01DF74"> 
+                        <font size="5px" color="#CE6029"> 
         <p>&nbsp;업비트&nbsp;XRP&nbsp;: <span id="upbit_XRP2"></span> </p>
         <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;매도잔량&nbsp;: <span id="upbit_XRP__"></span> </p>
 
-                        <font size="5px" color="CE6029"> 
+                        <font size="5px" color="01DF74"> 
         <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;매수잔량&nbsp;: <span id="gdac_XRP_"></span> </p>
         <p>&nbsp;지닥&nbsp;XRP&nbsp;: <span id="gdac_XRP"></span> </p>
-                        <font size="5px" color="#01DF74">         
+                        <font size="5px" color="#CE6029">         
         <p>&nbsp;지닥&nbsp;XRP&nbsp;: <span id="gdac_XRP2"></span> </p>
         <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;매도잔량&nbsp;: <span id="gdac_XRP__"></span> </p>
-                        <font size="5px" color="#939393">          
+                        <font size="5px" color="#939393">
+        <p>&nbsp;24시간 거래량&nbsp;: <span id="upbit_XRP_24" ></span> </p>                              
         <p>&nbsp;시가총액&nbsp;: <span id="bithumb_BTC_all" ></span> </p>  
     </body>
     
