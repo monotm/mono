@@ -17,25 +17,6 @@ div {text-align: center;}
 <body>
 <div id="show"></div>
 
-<script language="JavaScript">
-<!--
-function random_text()
-{};
-var random_text = new random_text();
-// Set the number of text strings to zero to start
-var number = 0;
-// Incremental list of all possible Text
-random_text[number++] = "도"
-random_text[number++] = "개"
-random_text[number++] = "걸"
-random_text[number++] = "윷"
-random_text[number++] = "모"
-// Create a random number with limits based on the number
-// of possible random text strings
-var random_number = Math.floor(Math.random() * number);
-// Write out the random text to the browser
---></script>
-
 <script>
 
 function d_clock() {
@@ -50,7 +31,7 @@ var minutes = ("00" + d_t.getMinutes()); //분
 
 document.getElementById("show").innerHTML = 
 (month+1)+"월"+ date + "일" +
-week[day] + " " + hours .slice(-2) + ":" + minutes .slice(-2)  + " &nbsp;&nbsp; " + (random_text[random_number]) ;
+week[day] + " " + hours .slice(-2) + ":" + minutes .slice(-2);
 
 }
 
