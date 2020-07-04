@@ -1,158 +1,21 @@
-<!DOCTYPE html>
-    <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-        <meta name="theme-color" content="#000000">
-            <body bgcolor = "#000000" text="#01DF74">
-              <font size="5px">
-                <font face="나눔고딕">
-                <font weight="bold">
-        <style>
-            table {border-collapse: collapse}
-            td, th {padding:5px; width:120px}
-        </style>
-        <script src="https://code.jquery.com/jquery-1.4.4.min.js"></script>
-        <script>
-            // 전역 변수 세팅
-            var usd = 0;
-            var alert_array = new Array();
-            
-            // 천단위 콤마 함수
-            function numberWithCommas(x) {
-                return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-            }
-            // 숫자 외 문자열 제거 함수
-            function numberDeleteChar(x) {
-                return x.toString().replace(/[^0-9]+/g, '');
-                  
-            }
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Frameset//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-frameset.dtd">
+<meta name="theme-color" content="#000000">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<frameset frameborder="0" cols="90%, 0%">
+  <frameset frameborder="0" rows="10%, 50%">
+    <frame src="https://monotm.github.io/mono/" MARGINWIDTH="1" MARGINHEIGHT="" scrolling="no" />
+    <frame src="https://monotm.github.io/mono/mool/500000___.html" MARGINWIDTH="1" MARGINHEIGHT="" scrolling="no" />
 
-            // 소수점 함수
-            function deleteThirdDecimals(x) {
-            var stringX = x.toString();
-            if (stringX.includes('.')) {
-            return stringX.substring(0, stringX.indexOf('.') + 2)
-
-            } else {
-            return x.toString();
-            }
-            }
-            
-
-            // 달러 환율 함수
-            function usdkrw(){
-                async: false, //동기식 처리
-            $.get('https://api.manana.kr/exchange/rate/KRW/USD.json', function(data) {
-            usd = parseFloat(data[0].rate);
-            $('#USDKRW').html('' + numberWithCommas(usd) );
-            });
-            }
-
-
-            // upbit 함수
-            function upbitxrp(){
-                $.get('https://api.upbit.com/v1/orderbook?markets=KRW-XRP', function(data) {
-                    var upbit_xrp = parseFloat(data[0].orderbook_units[0].ask_price);
-                    var upbit_xrp2 = parseFloat(data[0].orderbook_units[0].bid_price);
-                    var upbit_xrp_ = parseFloat(data[0].orderbook_units[0].ask_size);
-                    var upbit_xrp__ = parseFloat(data[0].orderbook_units[0].bid_size);                                        
-                    $('#upbit_XRP').html('' + numberWithCommas(upbit_xrp) + ' 원');
-                    $('#upbit_XRP2').html('' + numberWithCommas(upbit_xrp2) + ' 원');
-                    $('#upbit_XRP_').html('' + numberWithCommas(upbit_xrp_ .toFixed(0)) + '');
-                    $('#upbit_XRP__').html('' + numberWithCommas(upbit_xrp__ .toFixed(0)) + '');                                        
-                });
-            }
-
-            // gdac 함수
-            function gdacxrp(){
-                $.get('https://partner.gdac.com/v0.4/public/orderbook?pair=XRP%2FKRW', function(data) {
-                    var gdac_xrp = parseFloat(data['ask'][0]['price']);
-                    var gdac_xrp2 = parseFloat(data['bid'][0]['price']);
-                    var gdac_xrp_ = parseFloat(data['ask'][0]['volume']);
-                    var gdac_xrp__ = parseFloat(data['bid'][0]['volume']);                                 
-                    $('#gdac_XRP').html('' + numberWithCommas(gdac_xrp) + ' 원');
-                    $('#gdac_XRP2').html('' + numberWithCommas(gdac_xrp2) + ' 원');
-                    $('#gdac_XRP_').html('' + numberWithCommas(gdac_xrp_ .toFixed(0)) + ''); 
-                    $('#gdac_XRP__').html('' + numberWithCommas(gdac_xrp__ .toFixed(0)) + '');                                   
-                });
-            }
-
-            // 시총 함수 (크로스도메인 문제로 익스에서만 됨)
-                        function bithumball(){
-                $.get('https://api.coinlore.net/api/global/', function(data) {
-               //     $.get('https://api.coinlore.net/api/ticker/?id=90', function(data) {
-                 //   var bithumb_btc_all = parseFloat(data[0].market_cap_usd);
-                 data = JSON.parse(data); //json데이터로 전달 안되어 변환
-                    var bithumb_btc_all = parseFloat(data[0].total_mcap /1000000 * usd);
-                    $('#bithumb_BTC_all').html('' + numberWithCommas(bithumb_btc_all .toFixed(0)) + ''); // 거래소 시세 정보 표에 값 세팅
-
-                });
-            }
-
-            // upbit 함수
-            function upbitxrp24(){
-                $.get('https://api.upbit.com/v1/ticker?markets=KRW-XRP', function(data) {
-                    var upbit_xrpp = parseFloat(data[0].trade_price);
-                    var upbit_xrp_24 = parseFloat(data[0].acc_trade_price_24h /100000000 );
-                    $('#upbit_XRPP').html('' + numberWithCommas(upbit_xrpp) + ' 원');
-                    $('#upbit_XRP_24').html('' + numberWithCommas(upbit_xrp_24 .toFixed(0) ) + '억원');
-                });
-            }
-
-            // 폴로닉스 함수
-                            function polo(){
-                $.get('https://poloniex.com/public?command=returnTicker', function(data) {
-                    var polo_usd = parseFloat(data['USDT_XRP']['last']);                                 
-                    $('#polo_USD').html('' + deleteThirdDecimals(usd * polo_usd) + ' 원');                    
-                });
-            }
-
-            // 현재 시간 갱신
-            function CurrentTime() {
-                var d = new Date();
-                $("#lastUpdate").html(d.toString());
-            }
-            
-            // 갱신 함수
-            function proc() {
-                try {
-                    upbitxrp(); //
-                    upbitxrp24(); //                    
-                    gdacxrp(); //
-                    usdkrw(); //
-                    bithumball(); //
-                    polo(); //                   
-                    alert_start(); // 알람 확인
-                    CurrentTime(); // 갱신 시간
-                } catch(e){
-
-                } finally {
-                    setTimeout("proc()", 1200); //1.2초후 재시작        
-                }
-
-            }
-        </script>
-    </head>
-    <body onLoad="proc()">
-                        <font size="5px" color="01DF74"> 
-        <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;매수잔량&nbsp;: <span id="upbit_XRP_"></span> </p>
-        <p>&nbsp;업비트&nbsp;XRP&nbsp;: <span id="upbit_XRP"></span> </p>
-                        <font size="5px" color="#CE6029"> 
-        <p>&nbsp;업비트&nbsp;XRP&nbsp;: <span id="upbit_XRP2"></span> </p>
-        <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;매도잔량&nbsp;: <span id="upbit_XRP__"></span> </p>
-
-                        <font size="0.2px" color="3C3C3C"> 
-        <p>&nbsp;-------------------------------------------------------------------------&nbsp; <span id=""></span> </p>
-
-                        <font size="5px" color="01DF74"> 
-        <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;매수잔량&nbsp;: <span id="gdac_XRP_"></span> </p>
-        <p>&nbsp;지닥&nbsp;XRP&nbsp;: <span id="gdac_XRP"></span> </p>
-                        <font size="5px" color="#CE6029">         
-        <p>&nbsp;지닥&nbsp;XRP&nbsp;: <span id="gdac_XRP2"></span> </p>
-        <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;매도잔량&nbsp;: <span id="gdac_XRP__"></span> </p>
-                        <font size="5px" color="#939393">
-        <p>&nbsp;24시간 거래량&nbsp;: <span id="upbit_XRP_24" ></span> </p>                              
-        <p>&nbsp;시가총액&nbsp;: <span id="bithumb_BTC_all" ></span> </p>
-        <p>&nbsp;폴로닉스&nbsp;: <span id="polo_USD" ></span> </p>          
+  </frameset>
+  <noframes>
+    <body>
+      <p>This frameset document contains:</p>
+      <ul>
+        <li><a href="contents_of_frame1.html">contents_of_frame1.html</a></li>
+        <li><a href="contents_of_frame2.html">contents_of_frame1.html</a></li>
+      </ul>
     </body>
-    
+  </noframes>
+</frameset>
 </html>
