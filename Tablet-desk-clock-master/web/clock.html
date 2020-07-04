@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<!-- 
+ - Tablet desk clock
+ - 
+ - Copyright (c) Project Nayuki
+ - All rights reserved. Contact Nayuki for licensing.
+ - https://www.nayuki.io/page/tablet-desk-clock
+ -->
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+	<head>
+		<meta charset="UTF-8"/>
+		<title>Desk clock</title>
+		<meta http-equiv="Content-Style-Type" content="text/css"/>
+		<meta http-equiv="Content-Script-Type" content="application/javascript"/>
+		<link rel="stylesheet" href="clock.css" type="text/css" media="screen"/>
+	</head>
+	
+	<body>
+		<article id="clock">
+			<div id="clock-datetime-box">
+				<div id="clock-time-box"><span id="clock-hour"></span><span id="clock-colon">:</span><span id="clock-minute"></span><span id="clock-second"></span></div>
+				<div id="clock-date">&#xA0;</div>
+				<svg version="1.1" xmlns="http://www.w3.org/2000/svg" id="clock-daylight" style="display:none"></svg>
+			</div>
+			<div id="clock-utc">&#xA0;</div>
+			
+			<div id="clock-weather">
+				<span id="clock-weather-description"></span>
+				<span id="clock-weather-temperature"></span>
+			</div>
+			
+			<div id="clock-status-box">
+				<img src="icon/no-internet.svg" id="clock-status-no-internet" style="display:none"/>
+				<img src="icon/no-time-sync.svg" id="clock-status-no-time-sync" style="display:none"/>
+			</div>
+		</article>
+		
+		<script type="application/javascript" src="clock.js"></script>
+	</body>
+</html>
