@@ -22,23 +22,22 @@ div {text-align: center;}
 function d_clock() {
 var d_t = new Date();
 var month = d_t.getMonth();   // 월
-var date = d_t.getDate()  // 일
+var date = d_t.getDate() // 일
 var day = d_t.getDay() // 요일
 var week = ["일","월","화","수","목","금","(토)"]; // 요일 배열
-var hours = d_t.getHours(); //시간
-var minutes = d_t.getMinutes(); //분
+var hours = ("00" + d_t.getHours()); //시간
+var minutes = ("00" + d_t.getMinutes()); //분
 // var seconds = d_t.getSeconds(); // 초
 
 document.getElementById("show").innerHTML = 
 (month+1)+"월"+ date + "일" +
-week[day] + " " + hours + ":" +
-minutes;
+week[day] + " " + hours .slice(-2) + ":" + minutes .slice(-2) ;
 
 }
 
 d_clock();     // 우선 한번 실행
 
-setInterval(d_clock, 5000);   // 5초당 반복 실행
+setInterval(d_clock, 5000);   // 초당 반복 실행
 
 </script>
 
