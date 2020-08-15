@@ -73,7 +73,12 @@
                     var gdac_xrp22 = parseFloat(data['ask'][1]['price']);
                     var gdac_xrp222 = parseFloat(data['bid'][1]['price']);
                     var gdac_xrp_2 = parseFloat(data['ask'][1]['volume']);
-                    var gdac_xrp__2 = parseFloat(data['bid'][1]['volume']);                                                     
+                    var gdac_xrp__2 = parseFloat(data['bid'][1]['volume']); 
+
+                    var gdac_xrp3 = parseFloat(data['ask'][2]['price']);
+                    var gdac_xrp33 = parseFloat(data['bid'][2]['price']);
+                    var gdac_xrp_3 = parseFloat(data['ask'][2]['volume']);
+                    var gdac_xrp__33 = parseFloat(data['bid'][2]['volume']);                                                                    
                     $('#gdac_XRP').html('' + numberWithCommas(gdac_xrp) + ' 원');
                     $('#gdac_XRP2').html('' + numberWithCommas(gdac_xrp2) + ' 원');
                     $('#gdac_XRP_').html('' + numberWithCommas(gdac_xrp_ .toFixed(0)) + ''); 
@@ -81,8 +86,12 @@
 
                     $('#gdac_XRP22').html('' + numberWithCommas(gdac_xrp22) + ' 원');
                     $('#gdac_XRP222').html('' + numberWithCommas(gdac_xrp222) + ' 원');
+                    $('#gdac_XRP3').html('' + numberWithCommas(gdac_xrp3) + ' 원');
+                    $('#gdac_XRP33').html('' + numberWithCommas(gdac_xrp33) + ' 원');                  
                     $('#gdac_XRP_2').html('' + numberWithCommas(gdac_xrp_2 .toFixed(0)) + ''); 
-                    $('#gdac_XRP__2').html('' + numberWithCommas(gdac_xrp__2 .toFixed(0)) + '');                                   
+                    $('#gdac_XRP__2').html('' + numberWithCommas(gdac_xrp__2 .toFixed(0)) + '');
+                    $('#gdac_XRP_3').html('' + numberWithCommas(gdac_xrp_3 .toFixed(0)) + '');
+                    $('#gdac_XRP__33').html('' + numberWithCommas(gdac_xrp__33 .toFixed(0)) + '');                                                                       
                 });
             }
 
@@ -151,17 +160,18 @@
                         <font size="1px" color="3C3C3C"> 
         <p>&nbsp;---------------------------------------------&nbsp; <span id=""></span> </p>
 
-                        <font size="6px" color="01DF74"> 
-        <p>&nbsp;지닥&nbsp;&nbsp;&nbsp;XRP&nbsp;: <span id="gdac_XRP22"> </span> - <span id="gdac_XRP_2"></span> </p>
+                        <font size="6px" color="01DF74">
+        <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span id="gdac_XRP3"> </span> - <span id="gdac_XRP_3"></span> </p>
+        <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span id="gdac_XRP22"> </span> - <span id="gdac_XRP_2"></span> </p>
         <p>&nbsp;지닥&nbsp;&nbsp;&nbsp;XRP&nbsp;: <span id="gdac_XRP"> </span> - <span id="gdac_XRP_"></span> </p>
                         <font size="6px" color="#CE6029">         
         <p>&nbsp;지닥&nbsp;&nbsp;&nbsp;XRP&nbsp;: <span id="gdac_XRP2"></span> - <span id="gdac_XRP__"></span> </p>
-        <p>&nbsp;지닥&nbsp;&nbsp;&nbsp;XRP&nbsp;: <span id="gdac_XRP222"></span> - <span id="gdac_XRP__2"></span> </p>
-                        <font size="6px" color="#939393">
-        <p>&nbsp;폴로닉스&nbsp;: <span id="polo_USD" ></span> </p>
-        <p>&nbsp;24시간 거래량&nbsp;: <span id="upbit_XRP_24" ></span> </p>                              
+        <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span id="gdac_XRP222"></span> - <span id="gdac_XRP__2"></span> </p>
+        <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span id="gdac_XRP33"></span> - <span id="gdac_XRP__33"></span> </p>
+                        <font size="6px" color="#939393">           
         <p>&nbsp;시가총액&nbsp;: <span id="bithumb_BTC_all" ></span> </p>
-       
+        <p>&nbsp;폴로닉스&nbsp;: <span id="polo_USD" ></span> </p>
+        <p>&nbsp;24시간 거래량&nbsp;: <span id="upbit_XRP_24" ></span> </p>
     </body>
     
 </html>
