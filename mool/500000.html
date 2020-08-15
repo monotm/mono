@@ -69,11 +69,20 @@
                     var gdac_xrp = parseFloat(data['ask'][0]['price']);
                     var gdac_xrp2 = parseFloat(data['bid'][0]['price']);
                     var gdac_xrp_ = parseFloat(data['ask'][0]['volume']);
-                    var gdac_xrp__ = parseFloat(data['bid'][0]['volume']);                                 
+                    var gdac_xrp__ = parseFloat(data['bid'][0]['volume']);
+                    var gdac_xrp22 = parseFloat(data['ask'][1]['price']);
+                    var gdac_xrp222 = parseFloat(data['bid'][1]['price']);
+                    var gdac_xrp_2 = parseFloat(data['ask'][1]['volume']);
+                    var gdac_xrp__2 = parseFloat(data['bid'][1]['volume']);                                                     
                     $('#gdac_XRP').html('' + numberWithCommas(gdac_xrp) + ' 원');
                     $('#gdac_XRP2').html('' + numberWithCommas(gdac_xrp2) + ' 원');
                     $('#gdac_XRP_').html('' + numberWithCommas(gdac_xrp_ .toFixed(0)) + ''); 
-                    $('#gdac_XRP__').html('' + numberWithCommas(gdac_xrp__ .toFixed(0)) + '');                                   
+                    $('#gdac_XRP__').html('' + numberWithCommas(gdac_xrp__ .toFixed(0)) + '');
+
+                    $('#gdac_XRP22').html('' + numberWithCommas(gdac_xrp22) + ' 원');
+                    $('#gdac_XRP222').html('' + numberWithCommas(gdac_xrp222) + ' 원');
+                    $('#gdac_XRP_2').html('' + numberWithCommas(gdac_xrp_2 .toFixed(0)) + ''); 
+                    $('#gdac_XRP__2').html('' + numberWithCommas(gdac_xrp__2 .toFixed(0)) + '');                                   
                 });
             }
 
@@ -135,21 +144,19 @@
     </head>
     <body onLoad="proc()">
                         <font size="6px" color="01DF74"> 
-        <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;매수잔량&nbsp;: <span id="upbit_XRP_"></span> </p>
-        <p>&nbsp;업비트&nbsp;XRP&nbsp;: <span id="upbit_XRP"></span> </p>
+        <p>&nbsp;업비트&nbsp;XRP&nbsp;: <span id="upbit_XRP"></span> - <span id="upbit_XRP_"></span></p>
                         <font size="6px" color="#CE6029"> 
-        <p>&nbsp;업비트&nbsp;XRP&nbsp;: <span id="upbit_XRP2"></span> </p>
-        <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;매도잔량&nbsp;: <span id="upbit_XRP__"></span> </p>
+        <p>&nbsp;업비트&nbsp;XRP&nbsp;: <span id="upbit_XRP2"></span> - <span id="upbit_XRP__"></span></p>
 
                         <font size="1px" color="3C3C3C"> 
         <p>&nbsp;---------------------------------------------&nbsp; <span id=""></span> </p>
 
                         <font size="6px" color="01DF74"> 
-        <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;매수잔량&nbsp;: <span id="gdac_XRP_"></span> </p>
-        <p>&nbsp;지닥&nbsp;XRP&nbsp;: <span id="gdac_XRP"></span> </p>
+        <p>&nbsp;지닥&nbsp;XRP&nbsp;: <span id="gdac_XRP22"> </span> - <span id="gdac_XRP_2"></span> </p>
+        <p>&nbsp;지닥&nbsp;XRP&nbsp;: <span id="gdac_XRP"> </span> - <span id="gdac_XRP_"></span> </p>
                         <font size="6px" color="#CE6029">         
-        <p>&nbsp;지닥&nbsp;XRP&nbsp;: <span id="gdac_XRP2"></span> </p>
-        <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;매도잔량&nbsp;: <span id="gdac_XRP__"></span> </p>
+        <p>&nbsp;지닥&nbsp;XRP&nbsp;: <span id="gdac_XRP2"></span> - <span id="gdac_XRP__"></span> </p>
+        <p>&nbsp;지닥&nbsp;XRP&nbsp;: <span id="gdac_XRP222"></span> - <span id="gdac_XRP__2"></span> </p>
                         <font size="6px" color="#939393">
         <p>&nbsp;24시간 거래량&nbsp;: <span id="upbit_XRP_24" ></span> </p>                              
         <p>&nbsp;시가총액&nbsp;: <span id="bithumb_BTC_all" ></span> </p>
