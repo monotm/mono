@@ -68,11 +68,20 @@
                     var gdac_xrp = parseFloat(data['ask'][0]['price']);
                     var gdac_xrp2 = parseFloat(data['bid'][0]['price']);
                     var gdac_xrp_ = parseFloat(data['ask'][0]['volume']);
-                    var gdac_xrp__ = parseFloat(data['bid'][0]['volume']);                                 
+                    var gdac_xrp__ = parseFloat(data['bid'][0]['volume']);
+                    var gdac_xrp22 = parseFloat(data['ask'][1]['price']);
+                    var gdac_xrp222 = parseFloat(data['bid'][1]['price']);
+                    var gdac_xrp_2 = parseFloat(data['ask'][1]['volume']);
+                    var gdac_xrp__2 = parseFloat(data['bid'][1]['volume']);                                                     
                     $('#gdac_XRP').html('' + numberWithCommas(gdac_xrp) + ' 원');
                     $('#gdac_XRP2').html('' + numberWithCommas(gdac_xrp2) + ' 원');
                     $('#gdac_XRP_').html('' + numberWithCommas(gdac_xrp_ .toFixed(0)) + ''); 
-                    $('#gdac_XRP__').html('' + numberWithCommas(gdac_xrp__ .toFixed(0)) + '');                                   
+                    $('#gdac_XRP__').html('' + numberWithCommas(gdac_xrp__ .toFixed(0)) + '');
+
+                    $('#gdac_XRP22').html('' + numberWithCommas(gdac_xrp22) + ' 원');
+                    $('#gdac_XRP222').html('' + numberWithCommas(gdac_xrp222) + ' 원');
+                    $('#gdac_XRP_2').html('' + numberWithCommas(gdac_xrp_2 .toFixed(0)) + ''); 
+                    $('#gdac_XRP__2').html('' + numberWithCommas(gdac_xrp__2 .toFixed(0)) + '');                                
                 });
             }
 
